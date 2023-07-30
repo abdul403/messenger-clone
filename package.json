@@ -25,7 +25,7 @@
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
     "lodash": "^4.17.21",
-    "next": "13.4.10",
+    "next": "^13.4.12",
     "next-auth": "^4.22.1",
     "next-cloudinary": "^4.16.2",
     "next-superjson-plugin": "^0.5.9",
@@ -46,6 +46,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/lodash": "^4.14.196",
+    "encoding": "^0.1.13",
     "prisma": "^5.0.0"
   }
 }

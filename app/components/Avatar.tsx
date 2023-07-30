@@ -2,6 +2,7 @@
 
 import { User } from "@prisma/client";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import useActiveList from "../hooks/useActiveList";
 
 interface AvatarProps {
@@ -12,11 +13,18 @@ const Avatar: React.FC<AvatarProps> = ({ user }) => {
   const { members } = useActiveList();
 
   const isActive = members.indexOf(user?.email!) !== -1;
+  const [domLoaded, isDomLoded] = useState(false);
+
+  useEffect(() => {
+    isDomLoded(true);
+  });
 
   return (
-    <div className="relative">
-      <div
-        className="
+    <>
+      {domLoaded && (
+        <div className="relative">
+          <div
+            className="
         relative 
         inline-block
         rounded-full
@@ -26,16 +34,16 @@ const Avatar: React.FC<AvatarProps> = ({ user }) => {
         md:h-11
         md:w-11
         "
-      >
-        <Image
-          alt="Avatar"
-          src={user?.image || "/images/placeholder.jpg"}
-          fill
-        />
-      </div>
-      {isActive && (
-        <span
-          className="
+          >
+            <Image
+              alt="Avatar"
+              src={user?.image || "/images/placeholder.jpg"}
+              fill
+            />
+          </div>
+          {isActive && (
+            <span
+              className="
                   absolute
                   rounded-full
                   bg-green-500
@@ -48,9 +56,11 @@ const Avatar: React.FC<AvatarProps> = ({ user }) => {
                   md:h-3
                   md:w-3
                 "
-        />
+            />
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
